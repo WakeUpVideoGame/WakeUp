@@ -1,4 +1,4 @@
-Wake-up
+Wake Up
 =======
 
 Jeu de plateforme réalisé dans le cadre du cours de jeu vidéo pour la 3ème année d'école d'ingénieur IMAC.
