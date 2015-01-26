@@ -18,6 +18,7 @@ AWakeUpGameMode::AWakeUpGameMode(const class FPostConstructInitializeProperties&
 
 	// set the default HUD class
 	HUDClass = AWakeUpHUD::StaticClass();
+
 }
 
 void AWakeUpGameMode::Tick(float DeltaSeconds)
@@ -31,34 +32,34 @@ void AWakeUpGameMode::Tick(float DeltaSeconds)
 	}
 	else
 	{
-		SetCurrentState(EWakeUpPlayState::EGameOver);
+		// SetCurrentState(EWakeUpState::EGameOver);
 	}
 }
 
-void AWakeUpGameMode::SetCurrentState(EWakeUpPlayState NewState)
+void AWakeUpGameMode::SetCurrentState(EWakeUpState NewState)
 {
 	CurrentState = NewState;
 
 	HandleNewState(NewState);
 }
 
-void AWakeUpGameMode::HandleNewState(EWakeUpPlayState NewState)
+void AWakeUpGameMode::HandleNewState(EWakeUpState NewState)
 {
 	switch (NewState)
 	{
 		// When we're playing
-		case EWakeUpPlayState::EPlaying:
+		case EWakeUpState::EPlaying:
 			break;
 
 		// if the game is over
-		case EWakeUpPlayState::EGameOver:
+		case EWakeUpState::EGameOver:
 		{
 			APlayerController* PlayerController = UGameplayStatics::GetPlayerController(this, 0);
 			PlayerController->SetCinematicMode(true, true, true);
 		}
-		break;
+			break;
 
-		case EWakeUpPlayState::EUnknown:
+		case EWakeUpState::EUnknown:
 		default:
 			// do nothing
 			break;
@@ -69,5 +70,5 @@ void AWakeUpGameMode::BeginPlay()
 {
 	Super::BeginPlay();
 
-	SetCurrentState(EWakeUpPlayState::EPlaying);
+	SetCurrentState(EWakeUpState::EPlaying);
 }

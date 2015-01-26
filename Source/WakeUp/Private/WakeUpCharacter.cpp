@@ -10,9 +10,9 @@ AWakeUpCharacter::AWakeUpCharacter(const class FPostConstructInitializePropertie
 	: Super(PCIP)
 {
 	// Set a base power level for the character
-	PowerLevel = 2000.f;
+	PowerLevel = 0.f;
 
-	// Create our battery collection volume
+	// Create our power collection volume
 	CollectionSphere = PCIP.CreateDefaultSubobject<USphereComponent>(this, TEXT("CollectionSphere"));
 	CollectionSphere->AttachTo(RootComponent);
 	CollectionSphere->SetSphereRadius(200.f);

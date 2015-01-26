@@ -18,5 +18,5 @@ class WAKEUP_API AWakeUpHUD : public AHUD
 	UFont* HUDFont;
 
 	/** Primary draw call for the HUD */
-	virtual void DrawHUD() OVERRIDE;
+	virtual void DrawHUD() override;
 };

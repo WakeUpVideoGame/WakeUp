@@ -31,7 +31,7 @@ void AWakeUpHUD::DrawHUD()
 
 	AWakeUpGameMode* MyGameMode = Cast<AWakeUpGameMode>(UGameplayStatics::GetGameMode(this));
 	// if the game is over
-	if (MyGameMode->GetCurrentState() == EWakeUpPlayState::EGameOver)
+	if (MyGameMode->GetCurrentState() == EWakeUpState::EGameOver)
 	{
 		// create a variable for storing the size of printing Game Over
 		FVector2D GameOverSize;

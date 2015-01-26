@@ -8,13 +8,11 @@ AJumpPowerPickup::AJumpPowerPickup(const class FPostConstructInitializePropertie
 	: Super(PCIP)
 {
 	// The base power level given to the character when he gets the jump power
-	PowerPickupLevel = 150.f;
+	PowerPickupLevel = 1000.f;
 }
 
 void AJumpPowerPickup::OnPickedUp_Implementation()
 {
-	// Call the parent implementation of OnPickedUp first.
+	// No particular behavior for JumpPowerPickup when it is picked up
 	Super::OnPickedUp_Implementation();
-	// Destroy the power pickup
-	Destroy();
 }

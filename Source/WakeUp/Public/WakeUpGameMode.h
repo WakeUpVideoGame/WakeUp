@@ -4,10 +4,15 @@
 #include "WakeUpGameMode.generated.h"
 
 // enum to store the current state of gameplay
-enum class EWakeUpPlayState : short //uint8
+enum class EWakeUpState : short //uint8
 {
 	EPlaying,
 	EGameOver,
+	EPaused,
+	EMenu,
+	EConfiguration,
+	ECinematic,
+	ELeaderboard,
 	EUnknown
 };
 
@@ -16,22 +21,25 @@ class AWakeUpGameMode : public AGameMode
 {
 	GENERATED_UCLASS_BODY()
 
-	virtual void Tick(float DeltaSeconds) OVERRIDE;
+	virtual void Tick(float DeltaSeconds) override;
 
-	EWakeUpPlayState GetCurrentState() const;
+	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = Power)
+	float DecayRate;
 
-	void SetCurrentState(EWakeUpPlayState NewState);
+	EWakeUpState GetCurrentState() const;
 
-	virtual void BeginPlay() OVERRIDE;
+	void SetCurrentState(EWakeUpState NewState);
+
+	virtual void BeginPlay() override;
 
 private:
 
-	EWakeUpPlayState CurrentState;
+	EWakeUpState CurrentState;
 
-	void HandleNewState(EWakeUpPlayState NewState);
+	void HandleNewState(EWakeUpState NewState);
 };
 
-FORCEINLINE EWakeUpPlayState AWakeUpGameMode::GetCurrentState() const
+FORCEINLINE EWakeUpState AWakeUpGameMode::GetCurrentState() const
 {
 	return CurrentState;
 }

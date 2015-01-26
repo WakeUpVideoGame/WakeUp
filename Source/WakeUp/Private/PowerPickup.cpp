@@ -28,5 +28,9 @@ APowerPickup::APowerPickup(const class FPostConstructInitializeProperties& PCIP)
 
 void APowerPickup::OnPickedUp_Implementation()
 {
-	// Default behavior for a Pickup when it is picked up
+	// Default behavior
+	// Call the parent implementation of OnPickedUp first.
+	//Super::OnPickedUp_Implementation();
+	// Destroy the power pickup
+	Destroy();
 }

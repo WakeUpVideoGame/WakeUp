@@ -24,7 +24,7 @@ class AWakeUpCharacter : public ACharacter
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = Power)
 	float PowerLevel;
 
-	virtual void Tick(float DeltaSeconds) OVERRIDE;
+	virtual void Tick(float DeltaSeconds) override;
 
 protected:
 
@@ -34,7 +34,7 @@ protected:
 
 	/** Called by CollectPowers() to use the Blueprinted PowerUp functionality */
 	UFUNCTION(BlueprintImplementableEvent, Category = Power)
-	void PowerUp(float PowerPickupLevel); //float PowerPickupLevel
+	void PowerUp(float PowerPickupLevel);
 
 	/** Called for side to side input */
 	void MoveRight(float Val);
