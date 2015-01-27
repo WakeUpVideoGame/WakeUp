@@ -8,6 +8,7 @@
 /**
  * 
  */
+
 UCLASS()
 class WAKEUP_API AWakeUpSpawner : public AActor
 {

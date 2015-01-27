@@ -8,12 +8,14 @@
 /**
  * 
  */
+
 UCLASS()
 class WAKEUP_API AWakeUpSpawnable : public AActor
 {
 	GENERATED_UCLASS_BODY()
 
 protected:
+	//float const ConstRotationValue = 20.0f;
 	float const ConstRotationValue = 0.0f;
 
 	virtual void Tick(float DeltaSeconds);
