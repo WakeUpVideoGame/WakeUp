@@ -4,6 +4,7 @@
 #include "WakeUpSpawnable.h"
 
 
+
 AWakeUpSpawnable::AWakeUpSpawnable(const class FPostConstructInitializeProperties& PCIP)
 	: Super(PCIP)
 {
