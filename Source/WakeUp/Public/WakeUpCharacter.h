@@ -24,6 +24,10 @@ class AWakeUpCharacter : public ACharacter
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = Power)
 	float PowerLevel;
 
+	/** Power Jump activated or not  */
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = Power)
+	bool bIsJumpPowerActivated;
+
 	virtual void Tick(float DeltaSeconds) override;
 
 protected:
@@ -35,6 +39,10 @@ protected:
 	/** Called by CollectPowers() to use the Blueprinted PowerUp functionality */
 	UFUNCTION(BlueprintImplementableEvent, Category = Power)
 	void PowerUp(float PowerPickupLevel);
+
+	/** Called when we press a key (P), to collect any power */
+	UFUNCTION(BlueprintCallable, Category = Power)
+	void ActivatePower();
 
 	/** Called for side to side input */
 	void MoveRight(float Val);

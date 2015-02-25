@@ -10,7 +10,8 @@ AWakeUpCharacter::AWakeUpCharacter(const class FPostConstructInitializePropertie
 	: Super(PCIP)
 {
 	// Set a base power level for the character
-	PowerLevel = 0.f;
+	PowerLevel = 0;
+	bIsJumpPowerActivated = true;
 
 	// Create our power collection volume
 	CollectionSphere = PCIP.CreateDefaultSubobject<USphereComponent>(this, TEXT("CollectionSphere"));
@@ -58,8 +59,11 @@ AWakeUpCharacter::AWakeUpCharacter(const class FPostConstructInitializePropertie
 void AWakeUpCharacter::SetupPlayerInputComponent(class UInputComponent* InputComponent)
 {
 	// set up gameplay key bindings
-	InputComponent->BindAction("Jump", IE_Pressed, this, &ACharacter::Jump);
-	InputComponent->BindAction("Jump", IE_Released, this, &ACharacter::StopJumping);
+	if (bIsJumpPowerActivated == true)
+	{
+		InputComponent->BindAction("Jump", IE_Pressed, this, &ACharacter::Jump);
+		InputComponent->BindAction("Jump", IE_Released, this, &ACharacter::StopJumping);
+	}
 	//InputComponent->BindAction("CollectPowerPickup", IE_Pressed, this, &AWakeUpCharacter::CollectPowers);
 
 	InputComponent->BindAxis("MoveRight", this, &AWakeUpCharacter::MoveRight);
@@ -77,12 +81,18 @@ void AWakeUpCharacter::MoveRight(float Value)
 void AWakeUpCharacter::TouchStarted(const ETouchIndex::Type FingerIndex, const FVector Location)
 {
 	// jump on any touch
-	Jump();
+	if (bIsJumpPowerActivated)
+	{
+		Jump();
+	}	
 }
 
 void AWakeUpCharacter::TouchStopped(const ETouchIndex::Type FingerIndex, const FVector Location)
 {
-	StopJumping();
+	if (bIsJumpPowerActivated)
+	{
+		StopJumping();
+	}
 }
 
 void AWakeUpCharacter::CollectPowers()
@@ -123,6 +133,14 @@ void AWakeUpCharacter::CollectPowers()
 			PowerUp(PowerPickupLevel);
 		}
 	//}
+}
+
+void AWakeUpCharacter::ActivatePower()
+{
+	if (PowerLevel >= 1000)
+	{
+		bIsJumpPowerActivated = true;
+	}
 }
 
 void AWakeUpCharacter::Tick(float DeltaSeconds)
