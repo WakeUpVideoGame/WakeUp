@@ -9,6 +9,8 @@ AWakeUpSpawnable::AWakeUpSpawnable(const class FPostConstructInitializePropertie
 	: Super(PCIP)
 {
 	PrimaryActorTick.bCanEverTick = true;
+
+	// BP_log event graph : destroy() on BeginPLay event
 }
 
 void AWakeUpSpawnable::Tick(float DeltaSeconds)
