@@ -15,4 +15,5 @@ void AJumpPowerPickup::OnPickedUp_Implementation()
 {
 	// No particular behavior for JumpPowerPickup when it is picked up
 	Super::OnPickedUp_Implementation();
+	Destroy();
 }

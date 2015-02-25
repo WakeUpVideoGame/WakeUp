@@ -60,7 +60,7 @@ void AWakeUpCharacter::SetupPlayerInputComponent(class UInputComponent* InputCom
 	// set up gameplay key bindings
 	InputComponent->BindAction("Jump", IE_Pressed, this, &ACharacter::Jump);
 	InputComponent->BindAction("Jump", IE_Released, this, &ACharacter::StopJumping);
-	InputComponent->BindAction("CollectPowerPickup", IE_Pressed, this, &AWakeUpCharacter::CollectPowers);
+	//InputComponent->BindAction("CollectPowerPickup", IE_Pressed, this, &AWakeUpCharacter::CollectPowers);
 
 	InputComponent->BindAxis("MoveRight", this, &AWakeUpCharacter::MoveRight);
 

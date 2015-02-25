@@ -32,5 +32,5 @@ void APowerPickup::OnPickedUp_Implementation()
 	// Call the parent implementation of OnPickedUp first.
 	//Super::OnPickedUp_Implementation();
 	// Destroy the power pickup
-	Destroy();
+	//Destroy();
 }
