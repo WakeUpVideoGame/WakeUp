@@ -49,6 +49,9 @@ AWakeUpCharacter::AWakeUpCharacter(const class FPostConstructInitializePropertie
 	CharacterMovement->MaxWalkSpeed = 600.f;
 	CharacterMovement->MaxFlySpeed = 600.f;
 
+	CharacterMovement->bConstrainToPlane = true;
+	CharacterMovement->SetPlaneConstraintNormal(FVector(-1.0f, 0.0f, 0.0f));
+
 	// Note: The skeletal mesh and anim blueprint references on the Mesh component (inherited from Character) 
 	// are set in the derived blueprint asset named MyCharacter (to avoid direct content references in C++)
 }
