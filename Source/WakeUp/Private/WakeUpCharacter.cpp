@@ -10,6 +10,7 @@ AWakeUpCharacter::AWakeUpCharacter(const class FPostConstructInitializePropertie
 	: Super(PCIP)
 {
 	// Set a base power level for the character
+	MovementSpeed = 0;
 	PowerLevel = 0;
 	bIsJumpPowerActivated = false;
 
@@ -164,4 +165,5 @@ void AWakeUpCharacter::Tick(float DeltaSeconds)
 {
 	Super::Tick(DeltaSeconds);
 	//CharacterMovement->MaxWalkSpeed = SpeedFactor * PowerLevel + BaseSpeed;
+	MoveRight(MovementSpeed);
 }

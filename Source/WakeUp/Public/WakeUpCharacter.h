@@ -28,6 +28,10 @@ class AWakeUpCharacter : public ACharacter
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = Power)
 	bool bIsJumpPowerActivated;
 
+	/** Movement Speed */
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = MovementSpeed)
+	float MovementSpeed;
+
 	virtual void Tick(float DeltaSeconds) override;
 
 protected:
