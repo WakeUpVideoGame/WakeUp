@@ -7,3 +7,7 @@ WakeUp.sln
 WakeUp.v12.suo
 !Binaries/Win32/Leap.dll
 !Binaries/Win64/Leap.dll
+!Binaries/Win32/msvcp120.dll
+!Binaries/Win64/msvcp120.dll
+!Binaries/Win32/msvcr120.dll
+!Binaries/Win64/msvcr120.dll
