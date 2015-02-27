@@ -47,6 +47,12 @@ protected:
 	/** Called for side to side input */
 	void MoveRight(float Val);
 
+	/** Called when we press the jump button */
+	void Jump();
+
+	/** Called when we unpress the jump button */
+	void StopJumping();
+
 	/** Handle touch inputs. */
 	void TouchStarted(const ETouchIndex::Type FingerIndex, const FVector Location);
 

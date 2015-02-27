@@ -11,7 +11,7 @@ AWakeUpCharacter::AWakeUpCharacter(const class FPostConstructInitializePropertie
 {
 	// Set a base power level for the character
 	PowerLevel = 0;
-	bIsJumpPowerActivated = true;
+	bIsJumpPowerActivated = false;
 
 	// Create our power collection volume
 	CollectionSphere = PCIP.CreateDefaultSubobject<USphereComponent>(this, TEXT("CollectionSphere"));
@@ -62,17 +62,31 @@ AWakeUpCharacter::AWakeUpCharacter(const class FPostConstructInitializePropertie
 void AWakeUpCharacter::SetupPlayerInputComponent(class UInputComponent* InputComponent)
 {
 	// set up gameplay key bindings
-	if (bIsJumpPowerActivated == true)
-	{
-		InputComponent->BindAction("Jump", IE_Pressed, this, &ACharacter::Jump);
-		InputComponent->BindAction("Jump", IE_Released, this, &ACharacter::StopJumping);
-	}
+	InputComponent->BindAction("Jump", IE_Pressed, this, &AWakeUpCharacter::Jump);
+	InputComponent->BindAction("Jump", IE_Released, this, &AWakeUpCharacter::StopJumping);
+
 	//InputComponent->BindAction("CollectPowerPickup", IE_Pressed, this, &AWakeUpCharacter::CollectPowers);
 
 	InputComponent->BindAxis("MoveRight", this, &AWakeUpCharacter::MoveRight);
 
 	InputComponent->BindTouch(IE_Pressed, this, &AWakeUpCharacter::TouchStarted);
 	InputComponent->BindTouch(IE_Released, this, &AWakeUpCharacter::TouchStopped);
+}
+
+void AWakeUpCharacter::Jump()
+{
+	if (bIsJumpPowerActivated == true)
+	{
+		ACharacter::Jump();
+	}
+}
+
+void AWakeUpCharacter::StopJumping()
+{
+	if (bIsJumpPowerActivated == true)
+	{
+		ACharacter::StopJumping();
+	}
 }
 
 void AWakeUpCharacter::MoveRight(float Value)
@@ -84,7 +98,7 @@ void AWakeUpCharacter::MoveRight(float Value)
 void AWakeUpCharacter::TouchStarted(const ETouchIndex::Type FingerIndex, const FVector Location)
 {
 	// jump on any touch
-	if (bIsJumpPowerActivated)
+	if (bIsJumpPowerActivated == true)
 	{
 		Jump();
 	}	
@@ -92,7 +106,7 @@ void AWakeUpCharacter::TouchStarted(const ETouchIndex::Type FingerIndex, const F
 
 void AWakeUpCharacter::TouchStopped(const ETouchIndex::Type FingerIndex, const FVector Location)
 {
-	if (bIsJumpPowerActivated)
+	if (bIsJumpPowerActivated == true)
 	{
 		StopJumping();
 	}
