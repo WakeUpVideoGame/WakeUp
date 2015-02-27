@@ -5,3 +5,5 @@ WakeUp.opensdf
 WakeUp.sdf
 WakeUp.sln
 WakeUp.v12.suo
+!Binaries/Win32/Leap.dll
+!Binaries/Win64/Leap.dll
