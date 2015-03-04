@@ -1,0 +1,90 @@
+[33mcommit d93d67f2b471986bb6e0ab5d7724606712140f56[m
+Author: Bazard <baptiste-moizard@orange.fr>
+Date:   Wed Mar 4 17:07:46 2015 +0100
+
+    Added tree models and materials
+
+[33mcommit fecaa1ae67e716a971c54df84e36fcc3ea9cd6d0[m
+Author: Bazard <baptiste-moizard@orange.fr>
+Date:   Wed Mar 4 14:56:42 2015 +0100
+
+    Map mesh added
+
+[33mcommit f0e93534dcbbdbd50fe5dba5458376da03e27326[m
+Author: angecroft <angeline.guignard@gmail.com>
+Date:   Fri Feb 27 10:05:03 2015 +0100
+
+    Up: power jump activated when we get an orb
+
+[33mcommit 2bdc17b487351210a5ddfdf15c1a6568a798b82d[m
+Author: Alexandre Bordereau <alex.bordereau@gmail.com>
+Date:   Wed Feb 25 17:24:34 2015 +0100
+
+    UP : Character now constraints on the X axis
+
+[33mcommit c9a68e09df02f6a9913b3d00af460a39e36045ba[m
+Merge: c904587 7467504
+Author: angecroft <angeline.guignard@gmail.com>
+Date:   Wed Feb 25 12:31:58 2015 +0100
+
+    FIX: conflict
+
+[33mcommit c904587a6f985289f6e45ef9f8fb88e2cbaafa69[m
+Author: angecroft <angeline.guignard@gmail.com>
+Date:   Wed Feb 25 12:22:00 2015 +0100
+
+    UP: no jump + TODO debugguer
+
+[33mcommit 7467504698f3b53d51d13ad59ea66fb9d9257edf[m
+Author: Audrey Guénée <audreyguenee@free.fr>
+Date:   Wed Feb 25 12:09:03 2015 +0100
+
+    UP: destroy spawnable object after 5 sec (Alexandre)
+
+[33mcommit df9a2bd4634a8718c7d80de35fc37cc9205d1f70[m
+Author: Audrey Guénée <audreyguenee@free.fr>
+Date:   Wed Feb 25 11:06:59 2015 +0100
+
+    UP: get a power pickup with a trigger
+
+[33mcommit 8c0e37418493b113394ddbc0a8ac315be1f62130[m
+Author: Audrey Guénée <audreyguenee@free.fr>
+Date:   Thu Jan 29 18:12:24 2015 +0100
+
+    UP: project engine version corrected
+
+[33mcommit 679ab9006d2ef0421fe74e4cf5a6d24559577e9b[m
+Author: Alexandre Bordereau <alex.bordereau@gmail.com>
+Date:   Tue Jan 27 23:57:48 2015 +0100
+
+    Up : minor edit to be able to push ...
+
+[33mcommit 1f09a9c6cb550dc9495036eb355607a87ac28bb4[m
+Author: Alexandre Bordereau <alex.bordereau@gmail.com>
+Date:   Tue Jan 27 23:56:52 2015 +0100
+
+    Up : minor edit (test for push)
+
+[33mcommit 89e9401b4e584eb03f9be2724cbc846a3c86e7ec[m
+Author: Alexandre Bordereau <alex.bordereau@gmail.com>
+Date:   Tue Jan 27 23:49:28 2015 +0100
+
+    Add spawnable log
+
+[33mcommit e1e88e9ace69a72c592c1220c2cd2d247261d90a[m
+Author: Audrey Guénée <audreyguenee@free.fr>
+Date:   Mon Jan 26 11:18:04 2015 +0100
+
+    ADD: jump power pickup collected by character
+
+[33mcommit cc36feed02102369e0fe4d91a4c71743adce7a9d[m
+Author: Audrey Guénée <audreyguenee@free.fr>
+Date:   Sat Jan 17 17:14:32 2015 +0100
+
+    Update README.md
+
+[33mcommit 39f980860ac0015f820c4efbe405f4f67d09c01c[m
+Author: Audrey Guénée <audreyguenee@free.fr>
+Date:   Sat Jan 17 14:20:38 2015 +0100
+
+    ADD: base side scroller prototype
