@@ -3,12 +3,16 @@
 #include "WakeUp.h"
 #include "WakeUpGameMode.h"
 #include "WakeUpCharacter.h"
+#include "WakeUpLeapController.h"
 #include "Kismet/GameplayStatics.h"
 #include "WakeUpHUD.h"
 
 AWakeUpGameMode::AWakeUpGameMode(const class FPostConstructInitializeProperties& PCIP)
 	: Super(PCIP)
 {
+	// Failsafe
+	PlayerControllerClass = AWakeUpLeapController::StaticClass();
+
 	// set default pawn class to our Blueprinted character
 	static ConstructorHelpers::FClassFinder<APawn> PlayerPawnBPClass(TEXT("/Game/Blueprints/MyCharacter"));
 	if (PlayerPawnBPClass.Class != NULL)

@@ -30,8 +30,6 @@ class AWakeUpCharacter : public ACharacter
 
 	virtual void Tick(float DeltaSeconds) override;
 
-protected:
-
 	/** Called when we press a key (P), to collect any power */
 	UFUNCTION(BlueprintCallable, Category = Power)
 	void CollectPowers();
