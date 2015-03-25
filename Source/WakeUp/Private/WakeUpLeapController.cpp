@@ -27,10 +27,12 @@ AWakeUpLeapController::AWakeUpLeapController(const FObjectInitializer& ObjectIni
 		Device->getLeapController().enableGesture(Leap::Gesture::TYPE_SWIPE);
 		Device->getLeapController().enableGesture(Leap::Gesture::TYPE_CIRCLE);
 
-		Device->getLeapController().config().setFloat("Gesture.Swipe.MinLength", 150.0);
-		Device->getLeapController().config().setFloat("Gesture.Swipe.MinVelocity", 50);
+		Device->getLeapController().config().setFloat("Gesture.Swipe.MinLength", 130.0);
+		Device->getLeapController().config().setFloat("Gesture.Swipe.MinVelocity", 10);
+
 		Device->getLeapController().config().setFloat("Gesture.Circle.MinRadius", 100.0);
-		Device->getLeapController().config().setFloat("Gesture.Circle.MinArc", 5.);
+		Device->getLeapController().config().setFloat("Gesture.Circle.MinArc", 6.);
+
 		Device->getLeapController().config().save();
 	}
 }
@@ -73,7 +75,7 @@ void AWakeUpLeapController::Tick(float DeltaTime)
 
 					if (gest.type() == Leap::Gesture::TYPE_CIRCLE){
 						Leap::CircleGesture circleGesture = Leap::CircleGesture(gest);
-						GEngine->AddOnScreenDebugMessage(-1, 1000.f, FColor::Yellow, FString(TEXT("Action, it's a circle !")));
+						/*GEngine->AddOnScreenDebugMessage(-1, 1000.f, FColor::Yellow, FString(TEXT("Action, it's a circle !")));*/
 					}
 
 					if (gest.type() == Leap::Gesture::TYPE_SWIPE) {
@@ -84,25 +86,29 @@ void AWakeUpLeapController::Tick(float DeltaTime)
 						// Classify as right-left or up-down
 						if (isHorizontal){
 							if (swipeGesture.direction().x > 0){
-								GEngine->AddOnScreenDebugMessage(-1, 1000.f, FColor::Cyan, FString(TEXT("Right")));
+								/*GEngine->AddOnScreenDebugMessage(-1, 1000.f, FColor::Cyan, FString(TEXT("Right")));*/
 								LPLeft = false;
 								LPRight = true;
-								MyCharacter->CharacterMovement->MaxWalkSpeed = swipeGesture.speed() * 2;
+								auto speed = (swipeGesture.speed() * swipeGesture.speed()) / 100;
+								MyCharacter->CharacterMovement->MaxWalkSpeed = (speed > 450) ? 450 : speed;
 							}
 							else {
-								GEngine->AddOnScreenDebugMessage(-1, 1000.f, FColor::Yellow, FString(TEXT("Left")));
+								/*GEngine->AddOnScreenDebugMessage(-1, 1000.f, FColor::Yellow, FString(TEXT("Left")));*/
 								LPRight = false;
 								LPLeft = true;
-								MyCharacter->CharacterMovement->MaxWalkSpeed = swipeGesture.speed() * 2;
+								auto speed = (swipeGesture.speed() * swipeGesture.speed()) / 100;
+								MyCharacter->CharacterMovement->MaxWalkSpeed = (speed > 450) ? 450 : speed;
 							}
 						}
 						else { //vertical
 							if (swipeGesture.direction().y > 0){
-								GEngine->AddOnScreenDebugMessage(-1, 1000.f, FColor::Black, FString(TEXT("Up")));
+								/*GEngine->AddOnScreenDebugMessage(-1, 1000.f, FColor::Black, FString(TEXT("Up")));*/
 								Jump();
+								LPRight = false;
+								LPLeft = false;
 							}
 							else {
-								GEngine->AddOnScreenDebugMessage(-1, 1000.f, FColor::White, FString(TEXT("Down")));
+								/*GEngine->AddOnScreenDebugMessage(-1, 1000.f, FColor::White, FString(TEXT("Down")));*/
 								LPLeft = false;
 								LPRight = false;
 							}
@@ -112,8 +118,7 @@ void AWakeUpLeapController::Tick(float DeltaTime)
 			}
 		}
 		else{
-			GEngine->AddOnScreenDebugMessage(-1, 0.5f, FColor::Green, FString(TEXT("LeapController - No Data")));
-			/*UE_LOG(Controller, Warning, TEXT("WakeUpLeapController::LeapController - No Data"));*/
+			/*GEngine->AddOnScreenDebugMessage(-1, 0.5f, FColor::Green, FString(TEXT("LeapController - No Data")));*/
 		}
 	}
 	else
