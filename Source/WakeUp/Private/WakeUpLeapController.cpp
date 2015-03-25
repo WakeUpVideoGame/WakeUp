@@ -89,14 +89,14 @@ void AWakeUpLeapController::Tick(float DeltaTime)
 								/*GEngine->AddOnScreenDebugMessage(-1, 1000.f, FColor::Cyan, FString(TEXT("Right")));*/
 								LPLeft = false;
 								LPRight = true;
-								auto speed = (swipeGesture.speed() * swipeGesture.speed()) / 100;
+								auto speed = (swipeGesture.speed() * swipeGesture.speed()) / 40;
 								MyCharacter->CharacterMovement->MaxWalkSpeed = (speed > 450) ? 450 : speed;
 							}
 							else {
 								/*GEngine->AddOnScreenDebugMessage(-1, 1000.f, FColor::Yellow, FString(TEXT("Left")));*/
 								LPRight = false;
 								LPLeft = true;
-								auto speed = (swipeGesture.speed() * swipeGesture.speed()) / 100;
+								auto speed = (swipeGesture.speed() * swipeGesture.speed()) / 40;
 								MyCharacter->CharacterMovement->MaxWalkSpeed = (speed > 450) ? 450 : speed;
 							}
 						}

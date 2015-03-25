@@ -27,7 +27,7 @@ void AWakeUpHUD::DrawHUD()
 	// Get the character and print its power level
 	AWakeUpCharacter* MyCharacter = Cast<AWakeUpCharacter>(UGameplayStatics::GetPlayerPawn(this, 0));
 	FString PowerLevelString = FString::Printf(TEXT("%10.1f"), FMath::Abs(MyCharacter->PowerLevel));
-	DrawText(PowerLevelString, FColor::White, 50, 50, HUDFont);
+	/*DrawText(PowerLevelString, FColor::White, 50, 50, HUDFont);*/
 
 	AWakeUpGameMode* MyGameMode = Cast<AWakeUpGameMode>(UGameplayStatics::GetGameMode(this));
 	// if the game is over
