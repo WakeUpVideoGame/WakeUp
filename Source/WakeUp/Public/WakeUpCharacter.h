@@ -34,9 +34,13 @@ class AWakeUpCharacter : public ACharacter
 	UFUNCTION(BlueprintCallable, Category = Power)
 	void CollectPowers();
 
-	/** Called by CollectPowers() to use the Blueprinted PowerUp functionality */
+	/** Called by LeapMotion to replace E with keybord to use the Blueprinted Action functionality */
 	UFUNCTION(BlueprintImplementableEvent, Category = Power)
 	void PowerUp(float PowerPickupLevel);
+
+	/** Called by CollectPowers() to use the Blueprinted PowerUp functionality */
+	UFUNCTION(BlueprintImplementableEvent, BlueprintCallable, Category = Power)
+	void Action();
 
 	/** Called when we press a key (P), to collect any power */
 	UFUNCTION(BlueprintCallable, Category = Power)

@@ -28,7 +28,7 @@ AWakeUpLeapController::AWakeUpLeapController(const FObjectInitializer& ObjectIni
 		Device->getLeapController().enableGesture(Leap::Gesture::TYPE_CIRCLE);
 
 		Device->getLeapController().config().setFloat("Gesture.Swipe.MinLength", 130.0);
-		Device->getLeapController().config().setFloat("Gesture.Swipe.MinVelocity", 10);
+		Device->getLeapController().config().setFloat("Gesture.Swipe.MinVelocity", 5);
 
 		Device->getLeapController().config().setFloat("Gesture.Circle.MinRadius", 100.0);
 		Device->getLeapController().config().setFloat("Gesture.Circle.MinArc", 6.);
@@ -75,7 +75,7 @@ void AWakeUpLeapController::Tick(float DeltaTime)
 
 					if (gest.type() == Leap::Gesture::TYPE_CIRCLE){
 						Leap::CircleGesture circleGesture = Leap::CircleGesture(gest);
-						/*GEngine->AddOnScreenDebugMessage(-1, 1000.f, FColor::Yellow, FString(TEXT("Action, it's a circle !")));*/
+						Action();
 					}
 
 					if (gest.type() == Leap::Gesture::TYPE_SWIPE) {
@@ -89,20 +89,24 @@ void AWakeUpLeapController::Tick(float DeltaTime)
 								/*GEngine->AddOnScreenDebugMessage(-1, 1000.f, FColor::Cyan, FString(TEXT("Right")));*/
 								LPLeft = false;
 								LPRight = true;
-								auto speed = (swipeGesture.speed() * swipeGesture.speed()) / 40;
+								auto speed = (swipeGesture.speed() * swipeGesture.speed()) / 50;
 								MyCharacter->CharacterMovement->MaxWalkSpeed = (speed > 450) ? 450 : speed;
 							}
 							else {
 								/*GEngine->AddOnScreenDebugMessage(-1, 1000.f, FColor::Yellow, FString(TEXT("Left")));*/
 								LPRight = false;
 								LPLeft = true;
-								auto speed = (swipeGesture.speed() * swipeGesture.speed()) / 40;
+								auto speed = (swipeGesture.speed() * swipeGesture.speed()) / 50;
 								MyCharacter->CharacterMovement->MaxWalkSpeed = (speed > 450) ? 450 : speed;
 							}
 						}
 						else { //vertical
 							if (swipeGesture.direction().y > 0){
 								/*GEngine->AddOnScreenDebugMessage(-1, 1000.f, FColor::Black, FString(TEXT("Up")));*/
+								if (swipeGesture.direction().x > 0)
+									MoveRight(150.f);
+								else
+									MoveRight(-150.f);
 								Jump();
 								LPRight = false;
 								LPLeft = false;
@@ -111,6 +115,9 @@ void AWakeUpLeapController::Tick(float DeltaTime)
 								/*GEngine->AddOnScreenDebugMessage(-1, 1000.f, FColor::White, FString(TEXT("Down")));*/
 								LPLeft = false;
 								LPRight = false;
+								LPJump = false;
+								Action();
+								Wait = 45;
 							}
 						}
 					}
@@ -153,5 +160,6 @@ void AWakeUpLeapController::Jump()
 
 void AWakeUpLeapController::Action()
 {
-
+	if (MyCharacter != NULL)
+		MyCharacter->Action();
 }

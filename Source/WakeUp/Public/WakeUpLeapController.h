@@ -21,7 +21,7 @@ class WAKEUP_API AWakeUpLeapController : public APlayerController
 
 	
 	int Wait;
-	bool LPLeft, LPRight;
+	bool LPLeft, LPRight, LPJump;
 
 	void MoveRight(float value);
 	void Jump();

@@ -65,7 +65,7 @@ void AWakeUpCharacter::SetupPlayerInputComponent(class UInputComponent* InputCom
 	InputComponent->BindAction("Jump", IE_Pressed, this, &AWakeUpCharacter::Jump);
 	InputComponent->BindAction("Jump", IE_Released, this, &AWakeUpCharacter::StopJumping);
 
-	//InputComponent->BindAction("CollectPowerPickup", IE_Pressed, this, &AWakeUpCharacter::CollectPowers);
+	InputComponent->BindAction("Action", IE_Released, this, &AWakeUpCharacter::Action);
 
 	InputComponent->BindAxis("MoveRight", this, &AWakeUpCharacter::MoveRight);
 
