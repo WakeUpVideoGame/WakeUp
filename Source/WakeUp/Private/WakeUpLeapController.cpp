@@ -104,9 +104,9 @@ void AWakeUpLeapController::Tick(float DeltaTime)
 							if (swipeGesture.direction().y > 0){
 								/*GEngine->AddOnScreenDebugMessage(-1, 1000.f, FColor::Black, FString(TEXT("Up")));*/
 								if (swipeGesture.direction().x > 0)
-									MoveRight(150.f);
+									MoveRight(175.f);
 								else
-									MoveRight(-150.f);
+									MoveRight(-175.f);
 								Jump();
 								LPRight = false;
 								LPLeft = false;
