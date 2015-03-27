@@ -1,7 +1,9 @@
 Binaries/
 Intermediate/
 Saved/
+DerivedDataCache/
 WakeUp.opensdf
 WakeUp.sdf
 WakeUp.sln
 WakeUp.v12.suo
+WakeUp.uproject
